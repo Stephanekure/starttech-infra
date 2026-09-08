@@ -31,3 +31,10 @@ module "database" {
   vpc_id     = module.networking.vpc_id
   subnet_ids = module.networking.private_subnets
 }
+terraform {
+  backend "s3" {
+    bucket = "bedrock-terraform-state-stephan-12345"
+    key    = "infra/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
